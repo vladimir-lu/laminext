@@ -1,7 +1,6 @@
 package io.laminext.syntax
 
 import com.raquo.laminar.api.L._
-import com.raquo.laminar.nodes.ReactiveElement
 import io.laminext.core.MutationObserverBinders
 import io.laminext.core.ResizeObserverBinders
 import io.laminext.core.SetTimeoutBinders
@@ -16,14 +15,6 @@ import scala.concurrent.duration.FiniteDuration
 import scala.scalajs.js
 
 trait MiscSyntax {
-
-  @inline def nodeSeq[El <: ReactiveElement[dom.Element]](
-    seq: Modifier[El]*
-  ): Modifier[El] = seq
-
-  @inline def nodeSequence[A, El <: ReactiveElement[dom.Element]](
-    seq: Seq[Modifier[El]]
-  ): Modifier[El] = nodeSeq(seq: _*)
 
   @inline def when[A, El <: Element](b: Boolean)(
     mods: Modifier[El]*

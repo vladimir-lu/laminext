@@ -75,7 +75,7 @@ final class EventStreamOps[A](underlying: EventStream[A]) {
   @inline def flatMapTo[B, Inner[_], Output[+_] <: Observable[_]](
     inner: => Inner[B]
   )(implicit strategy: FlattenStrategy[EventStream, Inner, Output]): Output[B] = {
-    underlying.flatMap(_ => inner)(strategy)
+    underlying.flatMapCustom(_ => inner)(strategy)
   }
 
 }
